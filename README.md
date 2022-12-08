@@ -5,7 +5,7 @@ This repository contains write-ups written by team RainbowHash for challenges in
 ## Writeups
 
 1. Web
-- []()
+- [Blogspot](/Web/Blogspot/README.md)
 
 2. Pwn
 
