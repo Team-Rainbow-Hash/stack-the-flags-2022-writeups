@@ -12,7 +12,7 @@ This repository contains write-ups written by team RainbowHash for challenges in
 3. Mobile
 
 3. Osint
-- [Finding Nyan]()
-- [New Tasks!]()
+<!-- - [Finding Nyan]()
+- [New Tasks!]() -->
 
 4. Misc
