@@ -6,7 +6,41 @@ Category: Web | 425pts
 
 ## Analysis
 Glancing through the source code provided and challenge website, we can guess that this challenge is about Cross-Site Scripting (XSS) attacks, more specifically reflected XSS, for the following reasons:
-- There is an admin bot that visits the website with the flag in its cookies
+- There is an admin bot that visits the website with the flag in its cookies  
+<summary>
+Snippet of bot.js
+</summary>
+<details>
+```js
+// bot.js
+export const viewPosts = async () => {
+    try {
+		const browser = await puppeteer.launch(browser_options);
+		let context = await browser.createIncognitoBrowserContext();
+		let page = await context.newPage();
+
+		let token = await sign({ username: 'admin' });
+		await page.setCookie({
+			name: "session",
+			'value': token,
+			domain: "127.0.0.1",
+		});
+		await page.setCookie({
+			name: "flag",
+			'value': "REDACTED",
+			domain: "127.0.0.1",
+		});
+		await page.goto('http://127.0.0.1:1337/blog', {
+			waitUntil: 'networkidle2',
+			timeout: 8000
+		});
+		await browser.close();
+    } catch(e) {
+        console.log(e);
+    }
+};
+```
+</details>
 - You can input text and it gets displayed to everyone, including the admin bot
 
 However, at the same time, there is a content security policy we have to take note of:
