@@ -8,7 +8,7 @@ Category: Web | 425pts
 Glancing through the source code provided and challenge website, we can guess that this challenge is about Cross-Site Scripting (XSS) attacks, more specifically reflected XSS, for the following reasons:
 - There is an admin bot with the flag in its cookies that visits the posts you wrote (and hence control) everytime you submit a new post  
 	<details>
-	<summary>Snippet of bot.js</summary>
+	<summary>Relevant code from admin bot</summary>
 
 	```js
 	export const viewPosts = async () => {
@@ -40,6 +40,8 @@ Glancing through the source code provided and challenge website, we can guess th
 	```
 	</details>
 
+<br>
+<br>
 However, at the same time, there is a content security policy we have to take note of:
 ```js
 app.use(function (req, res, next) {
